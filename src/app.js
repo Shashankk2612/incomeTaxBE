@@ -9,17 +9,7 @@ const allowedOrigins = [
   'https://your-frontend-domain.com' // add later when deployed
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS not allowed'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
-}));
+app.use(cors());
 
 // ✅ IMPORTANT: handle preflight
 app.options('*', cors());

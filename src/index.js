@@ -9,7 +9,8 @@ dotenv.config();
     const [rows] = await db.query("SELECT 1 + 1 AS result");
     console.log("DB Connected:", rows);
 
-    const PORT = process.env.PORT || 4000;
+    const PORT = 4000;
+    console.log('PORT', PORT)
 
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);

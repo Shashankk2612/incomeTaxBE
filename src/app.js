@@ -6,7 +6,7 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:4200',
-  'https://your-frontend-domain.com'
+  'https://income-tax-pj85d6jwc-samshashank1995-8237s-projects.vercel.app'
 ];
 
 app.use(cors({

@@ -1,19 +1,30 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import routes from './routes/taxRoute.js';
 
 const app = express();
 
-const allowedOrigins = [
-  'http://localhost:4200',
-  'https://your-frontend-domain.com' // add later when deployed
-];
+// ✅ CORS config
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 
-app.use(cors());
-
-// ✅ IMPORTANT: handle preflight
+// ✅ Preflight fix
 app.options('*', cors());
 
+// ✅ Middlewares
 app.use(bodyParser.json());
+app.use(express.json());
+
+// ✅ Routes (IMPORTANT)
+app.use('/api', routes);
+
+// ✅ Test route
+app.get('/', (req, res) => {
+  res.send('API Running...');
+});
 
 export default app;
